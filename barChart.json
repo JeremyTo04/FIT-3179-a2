@@ -1,0 +1,22 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "2015.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "Trust (Government Corruption)",
+            "type": "quantitative",
+            "axis": {"title": "Trust (Government Corruption)"}
+        },
+        "y": {
+            "field": "Region",
+            "type": "nominal",
+            "axis": {"title": "Region"}
+        }
+    },
+    "transform": [
+        {"filter": {"field": "Region", "oneOf": ["Western Europe", "North America", "Australia and New Zealand", "Middle East and Northern Africa", "Latin America and Caribbean", "Southeastern Asia", "Central and Eastern Europe", "Eastern Asia", "Sub-Saharan Africa"]}}
+    ]
+}

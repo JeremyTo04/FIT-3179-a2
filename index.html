@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vega_lite_vis.js"></script>
+    <title>World Happiness Report</title>
+</head>
+
+<body>
+    <h1>Visualization of World Happiness</h1>
+    <h2>This Visualization aims to show which countries/regions are to most happy. It also shows if there are other factors that corrolate with Happiness</h2>
+    
+
+    <h2>Happiness Score Choropleth Map Overview</h2>
+    <p>
+        The choropleth map provides a visual representation of the happiness scores for each country. 
+        Each country is shaded based on its happiness score, with darker shades indicating higher scores and lighter shades
+         representing lower scores. This allows for a quick and intuitive comparison of happiness levels across countries, 
+         offering insights into the distribution and variations in global happiness.
+    </p>
+    <div id="happiness_map" class="centre"></div>
+
+    <h2>Trust and World Happiness: Bar Chart Overview</h2>
+    <p>
+        The bar chart visually represents the correlation between trust levels and world happiness. 
+        Each bar on the chart corresponds to a specific region or country, and the height of the bar 
+        indicates the level of trust within that region. The x-axis displays the different regions or countries, 
+        while the y-axis represents the trust levels, ranging from low to high.
+        Regions with higher bars depict a stronger correlation between trust and happiness, 
+        emphasizing the importance of trust in fostering a happier society.
+    </p>
+    <div id="bar_chart"></div>
+
+    <h2>GDP and Happiness Score Scatter Plot Overview</h2>
+    <p>
+        The scatter plot visually represents the correlation between GDP (Gross Domestic Product) and happiness scores for each region. Each point on the plot represents a country, with its position indicating its GDP and happiness score. A dropdown menu allows the user to select a specific region, highlighting the countries in that region on the scatter plot. This interactive feature enables users to focus on a particular region and observe the relationship between GDP and happiness scores within that region.
+    </p>
+    <div id="scatter_plot"></div>
+
+
+</body>
+
+</html>
