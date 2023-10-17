@@ -1,0 +1,103 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top 10 Happiest Countries",
+    "width": 600,
+    "height": 500,
+    "data": {
+        "url": "2015.csv"
+    },
+    "layer" :[{
+    "mark": {"type": "bar", "size": 5},
+    "encoding": {
+        "x": {
+            "field": "HappinessScore",
+            "type": "quantitative",
+            "axis": {"title": "Happiness Score"}
+        },
+        "color": {
+            "condition": [
+              {
+                "value": "red",
+                "test": {"field": "Country", "oneOf": ["Switzerland"]}
+              }
+            ],"value": "#3182bd"},
+        "y": {
+            "field": "Country",
+            "type": "nominal",
+            "axis": {"title": "Country"},
+            "sort": "-x"
+        }
+    },
+    "transform": [
+        {"filter": {"field": "Country", "oneOf": ["Switzerland",
+        "Iceland",
+        "Denmark",
+        "Norway",
+        "Canada",
+        "Finland",
+        "Netherlands",
+        "Sweden",
+        "New Zealand",
+        "Australia"]}}
+    ]}, 
+    {
+        "mark": {
+          "type": "point",
+          "size": 100,
+          "filled": true
+        },
+        "encoding": {
+            "y": {
+                "field": "Country",
+                "type": "nominal",
+                "axis": {"title": "Country", "titlePadding": 20},
+                "sort": "-x"
+            },
+          "x": {
+            "aggregate": "max",
+            "field": "HappinessScore",
+            "axis": {
+              "domain": true,
+              "grid": false,
+              "ticks": true
+            }
+          },
+          "size": {
+            "value": 250
+          },
+          "color": {
+            "condition": {
+                "value": "red",
+                "test": {"field": "Country", "oneOf": ["Switzerland"]}
+            },
+            "value": "#3182bd"
+          },
+          "tooltip": [
+            {
+              "field": "Country",
+              "type": "nominal",
+              "title": "Country"
+            },
+            {
+              "field": "HappinessScore",
+              "type": "quantitative",
+              "title": "Happiness Score",
+              "format": ","
+            }
+          ]
+        },
+        "transform": [
+            {"filter": {"field": "Country", "oneOf": ["Switzerland",
+            "Iceland",
+            "Denmark",
+            "Norway",
+            "Canada",
+            "Finland",
+            "Netherlands",
+            "Sweden",
+            "New Zealand",
+            "Australia"]}}
+        ]
+      }
+    ]
+}

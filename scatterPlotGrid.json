@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "repeat": {
+      "row": ["HappinessScore"],
+      "column": ["Economy (GDP per Capita)", "Health (Life Expectancy)", "Freedom", "Trust (Government Corruption)", "Generosity"]
+    },
+    "spec": {
+      "data": {"url": "2015.csv"},
+      "mark": "point",
+      "width": 170,
+      "height": 170,
+      "params": [
+        {
+          "name": "brush",
+          "select": {
+            "type": "interval",
+            "resolve": "union",
+            "on": "[pointerdown[event.shiftKey], window:pointerup] > window:pointermove!",
+            "translate": "[pointerdown[event.shiftKey], window:pointerup] > window:pointermove!",
+            "zoom": "wheel![event.shiftKey]"
+          }
+        },
+        {
+          "name": "grid",
+          "select": {
+            "type": "interval",
+            "resolve": "global",
+            "translate": "[pointerdown[!event.shiftKey], window:pointerup] > window:pointermove!",
+            "zoom": "wheel![!event.shiftKey]"
+          },
+          "bind": "scales"
+        }
+        ],
+      "encoding": {
+        "x": {"field": {"repeat": "row"}, "type": "quantitative"},
+        "y": {
+          "field": {"repeat": "column"},
+          "type": "quantitative",
+          "axis": {"minExtent": 30}
+        },
+        "color": {
+          "condition": {
+            "param": "brush",
+            "field": "Region",
+            "type": "nominal"
+          },
+          "value": "grey"
+        },
+        "opacity": {
+            "condition": {
+                "test": "search_input === 'All Regions' || test(regexp(search_input,'i'),datum.Region)",
+                "value": 0.8
+            },
+            "value": 0.1
+        },
+        "tooltip": [{"field": "Country", "type": "nominal"}, {"field": "HappinessScore", "type": "quantitative"}]
+    
+      }
+    },
+    "params": [
+        {
+            "name": "search_input",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "All Regions",
+                    "Western Europe",
+                    "North America",
+                    "Australia and New Zealand",
+                    "Middle East and Northern Africa",
+                    "Latin America and Caribbean",
+                    "Southeastern Asia",
+                    "Central and Eastern Europe",
+                    "Eastern Asia",
+                    "Sub-Saharan Africa"
+                ],
+                "name": "Regions "
+            },
+            "value": "All Regions"
+        }
+    ]
+}

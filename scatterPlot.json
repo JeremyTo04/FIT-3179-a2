@@ -1,0 +1,82 @@
+{
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {"url": "2015.csv"},
+        "layer":[{
+        "mark": "point",
+        "encoding": {
+            "opacity": {
+                "condition": {
+                    "test": "search_input === 'All Regions' || test(regexp(search_input,'i'),datum.Region)",
+                    "value": 0.8
+                },
+                "value": 0.1
+            },
+            "tooltip": [{"field": "Country", "type": "nominal"}, {"field": "HappinessScore", "type": "quantitative"}],
+            "x": {"field": "HappinessScore", "type": "quantitative", "axis": {"title": "Happiness Score"}},
+            "y": {"field": "Economy (GDP per Capita)", "type": "quantitative"}
+        }
+    }
+    ,{ 
+        "transform": [
+          {
+            "regression": "Economy (GDP per Capita)",
+            "on": "HappinessScore",
+            "params": true
+          },
+          {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+        ],
+        "mark": {
+          "type": "text",
+          "color": "firebrick",
+          "x": "width",
+          "align": "right",
+          "y": -5
+        },
+        "encoding": {
+          "text": {"type": "nominal", "field": "R2"}
+        }
+      }, {
+        "mark": {
+          "type": "line",
+          "color": "firebrick"
+        },
+        "transform": [
+          {
+            "regression": "Economy (GDP per Capita)",
+            "on": "HappinessScore"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "HappinessScore",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "Economy (GDP per Capita)",
+            "type": "quantitative"
+          }
+        }
+      }],
+        "params": [
+            {
+                "name": "search_input",
+                "bind": {
+                    "input": "select",
+                    "options": [
+                        "All Regions",
+                        "Western Europe",
+                        "North America",
+                        "Australia and New Zealand",
+                        "Middle East and Northern Africa",
+                        "Latin America and Caribbean",
+                        "Southeastern Asia",
+                        "Central and Eastern Europe",
+                        "Eastern Asia",
+                        "Sub-Saharan Africa"
+                    ],
+                    "name": "Regions "
+                },
+                "value": "All Regions"
+            }
+        ]
+}

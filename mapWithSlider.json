@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com//jamesjeffery77/jamesjeffery77.github.io/main/share-electricity-low-carbon_fullDataset.csv"
+    },
+    "transform": [
+      {
+        "lookup": "Country",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/TopoJSON/europe.topojson",
+            "format": {"type": "topojson", "feature": "europe"}
+          },
+          "key": "properties.NAME",
+          "fields": ["properties", "type", "geometry"]
+        }
+      },
+      {"filter": "datum.Year==Year"}
+    ],
+    "params": [
+      {
+        "name": "Year",
+        "value": 2015,
+        "bind": {
+          "input": "range",
+          "min": 2015,
+          "max": 2019,
+          "step": 1,
+          "name": "Select the year:"
+        }
+      }
+    ],
+    "projection": {"type": "naturalEarth1"},
+    "mark": "geoshape",
+    "encoding": {
+      "color": {"field": "percentage", "type": "quantitative"},
+      "tooltip": [
+        {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+        {"field": "percentage", "type": "quantitative"}
+      ]
+    }
+  }

@@ -1,0 +1,49 @@
+h1 {
+    font-size: 55px;
+    font-family: 'Georgia', serif;
+    color: white;
+  }
+
+h2 {
+    font-size: 30px;
+    font-family: 'Georgia', serif;
+    color: black;
+  }
+
+
+p   {
+    font-size: 18px;
+    font-family: 'Verdana', sans-serif;
+    color: black;
+    padding: auto;
+  }
+  
+  body {
+    background-color: #331e5a27;
+  }
+  .page {
+    width: 1400px;
+    background-color: #fffffff6;
+    margin: auto;
+    padding: 50px;
+    padding-top: 20px;
+  }
+  
+  .header {
+    width: 1400px;
+    background-color: #29272b;
+    margin: auto;
+    padding: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  
+  .leg{
+    width: 1400px;
+    background-color: #909eb1;
+    margin: auto;
+    padding: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  

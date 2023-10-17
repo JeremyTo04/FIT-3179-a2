@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src = "https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src = "js_vis.js"></script>
+    <script src = "scatterPlot.js"></script>
+    <title>World Happiness Report</title>
+    
+</head>
+
+<body>
+    <div class="header"><h1 style="text-align:center">World Happiness Report</h1></div>
+
+    <div class="page">
+
+    <h2 style="text-align: center">Which country is the Happiest?</h2>
+    <p>
+        The world happiness report is a landmark survey of the state of global happiness. 
+        The report ranks countries by how happy their citizens perceive themselves to be. 
+        The report is based on data from the Gallup World Poll, which asks people to evaluate their lives on a scale from 0 to 10.
+        The report also includes data on the country’s <strong>GDP per capita, healthy life expectancy, freedom, generosity, and Trust.</strong>
+        The report is published annually by the <strong>United Nations Sustainable Development Solutions Network.</strong>
+    </p>
+
+    <br>
+    <hr>
+    <br>
+
+    <h2 style="text-align: center">World Wide Happiness Score</h2>
+    <p>
+        The choropleth map provides a visual representation of the <strong>happiness scores</strong> for each country. 
+        Each country is <strong>based on its happiness score</strong>, with darker shades indicating higher scores and lighter shades
+        representing lower scores.
+    </p>
+    <br><br>
+    <div style = "text-align: center";>
+        <div id = "happinessMap"> </div>
+    </div>
+    
+
+    <br>
+    <hr>
+    <br>
+
+
+    <h2>Top 10 Countires based on Happiness</h2>
+    <p>
+        The bar chart shows the <strong>top 10 countries with the highest happiness scores.</strong> 
+        The top 10 Countires are shown, with their <strong>happiness scores</strong> represented by the length of the bars.
+        The most happy country is <strong>Switzerland</strong> with a score of 7.587, and it's highlighted in <strong>red</strong> .
+    </p>
+    <br><br>
+    <div style = "text-align: center";>
+        <div id = "bar_chart"> </div>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+
+    <h2 style="text-align: center">Quality of life indicators</h2>
+    <p>
+        The stacked bar chart visually represents how much <strong>each factor contributes to the happiness score </strong>for each of the top 10 countries.
+        It is interactive, allowing the user to <strong>select a specific indicator</strong> to view via a drop down menu.
+    </p>
+    <br><br>
+
+    <div style = "text-align: center";>
+        <div id = "stackedBarChart"> </div>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+
+    <h2 style="text-align: center">GDP and Happiness Score Scatter Plot Overview</h2>
+    <p>
+    The scatter plot visually represents the <strong>correlation between GDP (Gross Domestic Product) and happiness scores</strong> for each region. 
+    Each point on the plot represents a country, with its position indicating its <strong>GDP and happiness score.</strong>
+    The dropdown menu allows you to select a specific region, highlighting the countries in that region on the scatter plot.
+    </p>
+    <br><br>
+    <div style = "text-align: center";>
+        <div id = "scatterPlotGrid"> </div>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <p> 
+        Visualization made by Jeremy To Jun Wei. <br>
+        Dataset from <a href="https://www.kaggle.com/datasets/unsdsn/world-happiness?select=2019.csv">Kaggle</a>
+    </p>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "data": {"url": "2015.csv"},
+        "params": [
+        {
+          "name": "Indicator_selection",
+          "bind": {
+            "input": "select",
+            "options": [
+            null,
+            "Freedom",
+            "Trust (Government Corruption)",
+            "Generosity",
+            "Health (Life Expectancy)",
+            "Economy (GDP per Capita)"
+            ],
+            "labels":[
+            "Show All",
+            "Freedom",
+            "Trust (Government Corruption)",
+            "Generosity",
+            "Health (Life Expectancy)", 
+            "Economy (GDP per Capita)"],
+            "name": "Quality of Life Indicator: "
+          }
+        }
+      ],
+"transform": [
+  {"filter": {"field": "Country", "oneOf": ["Switzerland",
+    "Iceland",
+    "Denmark",
+    "Norway",
+    "Canada",
+    "Finland",
+    "Netherlands",
+    "Sweden",
+    "New Zealand",
+    "Australia"]}},
+  {"fold": ["Health (Life Expectancy)", "Freedom", "Generosity", "Trust (Government Corruption)", "Economy (GDP per Capita)"], "as": ["key", "value"]},
+  {"filter": "Indicator_selection == null || datum.key == Indicator_selection"}
+],
+    "encoding": {
+      "y": {
+        "field": "Country",
+        "type": "ordinal",
+        "title": "Country",
+        "sort":"-y"
+        
+      },
+      "x": {
+        "field": "value",
+        "aggregate": "sum",
+        "type": "quantitative",
+        "title": "Sum of Score"
+      }
+    },
+    "layer": [
+      {
+        "mark":{
+        "type": "bar",
+        "width":26
+        },
+        "encoding": {
+            "tooltip":[
+              {"field":"key", "type": "nominal","title":"Quality of Life Indicator:"},
+              {"field":"value", "type": "nominal","title":"Score:", "format":".3f"}
+            ],
+            "color": {
+            "field": "key",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Freedom","Trust (Government Corruption)","Generosity","Health (Life Expectancy)", "Economy (GDP per Capita)"]
+          },
+            "title": "Life Indicator",
+            "legend":{
+              "titleColor":"black",
+              "orient": "top",
+              "labelColor":"black",
+              "titleFontSize":16,
+              "labelFontSize":13
+            }
+            }
+        }
+      },
+      {
+        "mark":{
+            "type": "text",
+            "align":"left",
+            "baseline":"middle",
+            "color":"black",
+            "dx":3,
+            "size":13
+        },
+        "encoding": {
+            "text":{
+                "field":"value","aggregate": "sum","type": "quantitative","format":".3f"
+            }
+        }
+      }
+    ]
+  }
+    
